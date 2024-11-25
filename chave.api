@@ -1,0 +1,27 @@
+AIzaSyCVqGRN6xXxdjIEhf-iKG4Z3qosLMBfU6Q
+
+RafaelImersao
+9NVYfAwpnSBNlxGv
+
+mongodb+srv://RafaelImersao:9NVYfAwpnSBNlxGv@cluster0.ho2xo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+
+
+
+import { MongoClient } from "mongodb";
+
+export default async function conectarAoBanco(stringConexao) {
+    let MongoClient;
+
+    try {
+        mongoClient = new MongoClient(stringConexao);
+        console.log("Conectando ao cluster do banco de dados...");
+        await mongoClient.connect();
+    console.log("Conectado ao MongoDB Atlas com sucesso!");
+
+    return mongoClient;
+    } catch (erro) {
+        console.error("Falha na conexão com o banco" , erro);
+        process.exit();
+    }
+}
